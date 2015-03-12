@@ -6,19 +6,112 @@ html *{
 html, body{
 	height:100%;
 	width:100%;
+	font-family: 'Open Sans', sans-serif;
 }
 
+/* Classes */
+.clear{
+	clear:both;
+}
+
+.button{
+	display:inline-block;
+	width:auto;
+	padding:.25em 2em;
+	margin-left:1em;
+	background-color:#009696;
+	border:1px solid #007575;
+	color:#fff;
+}
+.button:hover{
+	background-color:#00B8B8;
+	cursor:pointer;
+}
+
+input{
+	font-family: 'Open Sans', sans-serif;
+	font-size:1em;
+	line-height:1em; 
+}
 /* Layout */
-#nav{
+#top{
 	position:fixed;
 	top:0;
 	left:0;
 	width:100%;
-	background:#f00;
 }
-
+#header{
+	position:absolute;
+	width:100%;
+	background-color:#000;
+	z-index:2;
+}
+#nav{
+	float:left;
+}
+#sign-in{
+	position:absolute;
+	top:0;
+	right:0;
+}
+#content-container{
+	position:relative;
+	margin-top:62px;
+}
+#content{
+	width:100%;
+	background-color:#111;
+	color:#ddd;
+	z-index:1;
+}
 #map{
 	height:100%;
 	min-height:100%;
-	background:#0f0;
+	background-color:#0f0;
+}
+
+/* Navigation */
+#nav ul{
+	list-style:none;
+}
+
+#nav li{
+	float:left;
+	margin:0 10px;
+}
+#nav a{
+	display:block;
+}
+#nav a:hover{
+	background-color:#111;
+}
+#nav a.active{
+	background-color:#111;
+}
+#nav img{
+	height:62px;
+}
+
+/*Sign in*/
+#sign-in{
+	padding:1em;
+}
+#sign-in label{
+	display:inline-block;
+	margin-left:1em;
+	color:#fff;
+	vertical-align:middle;
+}
+#sign-in input{
+	display:inline-block;
+	width:100px;
+	border:1px solid #fff;
+	padding:0 .25em;
+	margin:.25em 0;
+	vertical-align:middle;
+}
+
+#sign-in input:focus{
+	outline:none;
+	border:1px solid #007575;
 }

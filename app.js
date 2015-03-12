@@ -3,7 +3,8 @@
 
     angular
     .module('TattooMap',[
-    	'ngRoute',
-    	'appRoutes'
+    	'ngAnimate',
+    	'ui.router',
+    	'appStates'
     ]);
 })();
