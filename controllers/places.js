@@ -2,8 +2,8 @@
 	'use strict';
 
 	angular
-	.module('TattooMap')
-	.controller('PlacesController',PlacesController);
+	.module('app')
+	.controller('placesController',PlacesController);
 
 	PlacesController.$inject = ['$scope'];
 

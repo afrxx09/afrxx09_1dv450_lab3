@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html data-ng-app="TattooMap">
+<html data-ng-app="app">
 	<head>
 		<base href="/afrxx09_1dv450_lab3/">
 		<title>TattooMap</title>
@@ -21,18 +21,22 @@
 		<script type="text/javascript" src="//code.jquery.com/jquery-2.1.3.min.js"></script>
 		<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
 		<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular-animate.js"></script>
+		<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular-route.js"></script>
+		<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular-resource.js"></script>
 		<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAni7f90xjD6D6v04sBFhDuRo8jBcoP7I8"></script>
 		
 		<script type="text/javascript" src="libs/angular-ui-router.min.js"></script>
 
-		<script type="text/javascript" src="app.js"></script>
+		<!-- Modules, Directives, Services -->
 		<script type="text/javascript" src="app-states.js"></script>
-		
-		<!-- directives -->
 		<script type="text/javascript" src="directives/myGoogleMap.js"></script>
 		
-		<!-- controllers -->
+		<!-- App, controllers, application explicit services -->
+		<script type="text/javascript" src="app.js"></script>
+		
+		<script type="text/javascript" src="services/people-service.js"></script>
 		<script type="text/javascript" src="controllers/people.js"></script>
+
 		<script type="text/javascript" src="controllers/places.js"></script>
 		<script type="text/javascript" src="controllers/tags.js"></script>
 	</body>

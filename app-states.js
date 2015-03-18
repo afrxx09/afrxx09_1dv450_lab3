@@ -2,7 +2,7 @@
     'use strict';
 
     angular
-    .module('appStates', [])
+    .module('appStates', ['ngResource'])
     .config(appStatesConfig);
 
     appStatesConfig.$inject = ['$stateProvider', '$urlRouterProvider'];
@@ -18,19 +18,19 @@
             .state('people', {
                 url: '/people',
                 templateUrl: 'views/people/list.html',
-                controller: 'PeopleController'
+                controller: 'peopleController'
             })
             .state('tags', {
                 url: '/tags',
                 templateUrl: 'views/tags/list.html',
-                controller: 'TagsController'
+                controller: 'tagsController'
             })
             .state('places', {
                 url: '/places',
                 templateUrl: 'views/places/list.html',
-                controller: 'PlacesController'
+                controller: 'placesController'
             });
-
+            
         //$locationProvider.html5Mode(true);
     };
 })();
