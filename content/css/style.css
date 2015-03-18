@@ -39,6 +39,7 @@ input{
 	top:0;
 	left:0;
 	width:100%;
+	z-index:1;
 }
 #header{
 	position:absolute;
@@ -114,4 +115,10 @@ input{
 #sign-in input:focus{
 	outline:none;
 	border:1px solid #007575;
+}
+
+/* Google maps */
+#my-google-map-canvas{
+	width:100%;
+	height:100%;
 }
