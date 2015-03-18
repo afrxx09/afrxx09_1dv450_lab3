@@ -6,7 +6,6 @@
 	.controller('tagsController',TagsController);
 
 	TagsController.$inject = ['$scope'];
-
 	function TagsController($scope) {
 		$scope.items = ['x', 'y', 'z'];
 	}

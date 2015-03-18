@@ -1,9 +1,9 @@
 <div class="clear"></div>
-<div>
-	<label>Email</label>
-	<input type="text" name="email" />
-	<label>Password</label>
-	<input type="password" name="password" />
-	<span class="button">Sign in</button>
+<div data-ng-controller="signinController">
+	<label for="email">Email</label>
+	<input type="text" name="email" id="email" ng-model="user.email" />
+	<label for="password">Password</label>
+	<input type="password" name="password" id="password" data-ng-model="user.password" />
+	<span class="button" data-ng-click="signIn()">Sign in</button>
 </div>
 <div class="clear"></div>

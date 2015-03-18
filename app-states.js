@@ -15,10 +15,15 @@
             .state('home', {
                 url: '/'
             })
-            .state('people', {
-                url: '/people',
-                templateUrl: 'views/people/list.html',
-                controller: 'peopleController'
+            .state('users', {
+                url: '/users',
+                templateUrl: 'views/users/list.html',
+                controller: 'usersController'
+            })
+            .state('user', {
+                url: '/users/{id}',
+                templateUrl: 'views/users/details.html',
+                controller: 'userController'
             })
             .state('tags', {
                 url: '/tags',
@@ -30,7 +35,6 @@
                 templateUrl: 'views/places/list.html',
                 controller: 'placesController'
             });
-            
         //$locationProvider.html5Mode(true);
     };
 })();
