@@ -23,7 +23,10 @@
 		<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular-animate.js"></script>
 		<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular-route.js"></script>
 		<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular-resource.js"></script>
+		<script type="text/javascript" src="//cdn.rawgit.com/auth0/angular-jwt/master/dist/angular-jwt.js"></script>
+		<script type="text/javascript" src="//cdn.rawgit.com/auth0/angular-storage/master/dist/angular-storage.js"></script>
 		<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAni7f90xjD6D6v04sBFhDuRo8jBcoP7I8"></script>
+		
 		
 		<script type="text/javascript" src="libs/angular-ui-router.min.js"></script>
 
@@ -34,12 +37,17 @@
 		<!-- App, controllers, application explicit services -->
 		<script type="text/javascript" src="app.js"></script>
 		
+		<script type="text/javascript" src="services/signin-service.js"></script>
 		<script type="text/javascript" src="controllers/signin.js"></script>
 		
 		<script type="text/javascript" src="services/user-service.js"></script>
 		<script type="text/javascript" src="controllers/users.js"></script>
+		<script type="text/javascript" src="controllers/profile.js"></script>
 
+		<script type="text/javascript" src="services/place-service.js"></script>
 		<script type="text/javascript" src="controllers/places.js"></script>
+		
+		<script type="text/javascript" src="services/tag-service.js"></script>
 		<script type="text/javascript" src="controllers/tags.js"></script>
 	</body>
 </html>

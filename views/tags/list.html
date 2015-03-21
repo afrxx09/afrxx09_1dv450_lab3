@@ -1,4 +1,4 @@
 <h1>Tags</h1>
 <ul>
-	<li ng-repeat="item in items">{{ item }}</li>
+	<li ng-repeat="t in tags"><a ui-sref="tag({ id: t.id })">{{ t.tag }}</a></li>
 </ul>

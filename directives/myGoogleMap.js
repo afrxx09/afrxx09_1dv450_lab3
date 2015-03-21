@@ -5,7 +5,9 @@
 	.module('googleMapsDirective', [])
 	.directive('myGoogleMap', MyGoogleMap);
 	
-	function MyGoogleMap(){
+	MyGoogleMap.$inject = ['$rootScope'];
+	
+	function MyGoogleMap($rootScope){
 		return {
 			restrict: 'A',
 			scope: {},
@@ -14,15 +16,24 @@
 			controller: myGoogleMapController
 		};
 		
-		myGoogleMapController.$inject = ['$scope', '$element', '$attrs'];
+		myGoogleMapController.$inject = ['$rootScope', '$scope', '$element', '$attrs'];
 
-		function myGoogleMapController($scope, $element, $attrs){
-			var mapOptions = {center: { lat: -34.397, lng: 150.644}, zoom: 8};
+		function myGoogleMapController($rootScope, $scope, $element, $attrs){
+			var mapOptions = {center: { lat: 59.300, lng: 18.200}, zoom: 8};
 			$scope.googleMap = new google.maps.Map(document.getElementById('my-google-map-canvas'), mapOptions);
-		}
-
-		function getCenter(){
-			return $scope.googleMap.getCenter();
+			
+			if (navigator.geolocation) {
+            	console.log('geo');
+                navigator.geolocation.getCurrentPosition(function(position){
+            		var pos = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+            		$scope.googleMap.setCenter(pos);
+            		$scope.googleMap.setZoom(12);
+                });
+            }
+            
+			google.maps.event.addListener($scope.googleMap, "center_changed", function() {
+				$rootScope.mapCenter = $scope.googleMap.getCenter();
+			});
 		}
 	}
 })();

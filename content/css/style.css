@@ -57,7 +57,7 @@ input{
 }
 #content-container{
 	position:relative;
-	margin-top:62px;
+	margin-top:67px;
 }
 #content{
 	width:100%;
@@ -92,9 +92,36 @@ input{
 	height:62px;
 }
 
+/*Search*/
+#search{
+	width:460px;
+	margin:14px auto 0;
+}
+#search input{
+	float:left;
+	height:36px;
+	width:400px;
+	padding:1px;
+	border:none;
+	outline:none;
+}
+#search span.button{
+	padding:1px 8px;
+	margin:0;
+	border:none;
+}
+#search span.button img{
+	display:block;
+	float:left;
+	height:36px;
+}
 /*Sign in*/
 #sign-in{
 	padding:1em;
+	color:#fff;
+}
+#sign-in a{
+	color:#009696;
 }
 #sign-in label{
 	display:inline-block;
@@ -105,7 +132,7 @@ input{
 #sign-in input{
 	font-size: .8em;
 	display:inline-block;
-	width:100px;
+	width:150px;
 	border:1px solid #fff;
 	padding:0 .25em;
 	margin:.25em 0;

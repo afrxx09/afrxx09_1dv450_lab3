@@ -1,4 +1,4 @@
 <h1>Places</h1>
 <ul>
-	<li ng-repeat="item in items">{{ item }}</li>
+	<li ng-repeat="p in places"><a ui-sref="place({ id: p.id })">{{ p.name }}</a></li>
 </ul>

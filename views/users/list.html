@@ -1,4 +1,4 @@
 <h1>People</h1>
 <ul>
-	<li ng-repeat="u in users">{{ u.first_name }}</li>
+	<li ng-repeat="u in users"><a ui-sref="user({ id: u.id })">{{ u.first_name }}</a></li>
 </ul>

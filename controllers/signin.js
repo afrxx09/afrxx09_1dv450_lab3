@@ -5,17 +5,17 @@
 	.module('app')
 	.controller('signinController', SigninController);
 	
-	SigninController.$inject = ['$http', '$scope', 'CONST'];
-	function SigninController($http, $scope, CONST){
-		$scope.user = {};
+	SigninController.$inject = ['$http', '$scope', 'signInService'];
+	function SigninController($http, $scope, signInService){
+		$scope.user = {email: 'user1@test.com', password: 'password'};
 		$scope.signIn = function(){
-			$http.post(CONST.API_URL + 'authenticate', $scope.user)
-			.success(function(data){
-				console.log(data);
-			})
-			.error(function(err){
-				console.log(err.error);
-			});
-		}
+			var email = $scope.user.email;
+			var password = $scope.user.password;
+			signInService.signIn(email, password);
+		};
+		
+		$scope.signOut = function(){
+			signInService.signOut();
+		};
 	}
 })();
