@@ -13,17 +13,21 @@
 			scope: {},
 			replace: true,
 			template: '<div id="my-google-map-canvas"></div>',
-			controller: myGoogleMapController
+			controller: MyGoogleMapController
 		};
 		
-		myGoogleMapController.$inject = ['$rootScope', '$scope', '$element', '$attrs'];
+		MyGoogleMapController.$inject = ['$rootScope', '$scope', '$element', '$attrs'];
 
-		function myGoogleMapController($rootScope, $scope, $element, $attrs){
-			var mapOptions = {center: { lat: 59.300, lng: 18.200}, zoom: 8};
+		function MyGoogleMapController($rootScope, $scope, $element, $attrs){
+			var mapOptions = {
+				center: { lat: 59.300, lng: 18.200},
+				zoom: 8,
+				panControl: false,
+				zoomControl: false
+			};
 			$scope.googleMap = new google.maps.Map(document.getElementById('my-google-map-canvas'), mapOptions);
 			
 			if (navigator.geolocation) {
-            	console.log('geo');
                 navigator.geolocation.getCurrentPosition(function(position){
             		var pos = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
             		$scope.googleMap.setCenter(pos);

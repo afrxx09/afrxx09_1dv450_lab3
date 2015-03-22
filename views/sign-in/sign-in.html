@@ -1,0 +1,17 @@
+<div data-ng-show="!currentUser">
+	<div id="sign-in-form">
+		<div id="sign-in-labels">
+			<label for="email">Email</label>
+			<label for="password">Password</label>
+		</div>
+		<div id="sign-in-inputs">
+			<input type="text" name="email" id="email" ng-model="user.email" />
+			<input type="password" name="password" id="password" data-ng-model="user.password" />
+		</div>
+		<div id="sign-in-submit">
+			<span class="button" data-ng-click="signIn()">Sign in</button>
+		</div>
+		<div class="clear"></div>
+	</div>
+</div>
+<div class="clear"></div>

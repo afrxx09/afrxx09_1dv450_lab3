@@ -5,8 +5,8 @@
 	.module('app')
 	.factory('signInService', SignInService);
 
-	SignInService.$inject = ['$rootScope', '$http', '$state', 'jwtHelper', 'store', 'CONST'];
-	function SignInService($rootScope, $http, $state, jwtHelper, store, CONST){
+	SignInService.$inject = ['$rootScope', '$http', '$state', 'jwtHelper', 'store', 'CONST', 'myMessages'];
+	function SignInService($rootScope, $http, $state, jwtHelper, store, CONST, myMessages){
 		$rootScope.currentUser = null;
 		var decodeJWT = function(){
 			var jwt = store.get('jwt');
@@ -30,6 +30,7 @@
 			store.set('jwt', null);
 	        $rootScope.currentUser = null;
 	        $state.go('home', {}, {reload: true});
+	        myMessages.success('Signed out!');
 		};
 		
 		var signIn = function(email, password){
@@ -39,9 +40,11 @@
 				store.set('jwt', data.token);
 				store.set('email', data.user.email);
 				decodeJWT();
+				$state.go('home');
+				myMessages.success('Signed in!');
 			})
 			.error(function(err){
-				console.log(err.error);
+				console.log('Could not sign in');
 			});
 		};
 		

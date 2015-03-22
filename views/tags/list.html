@@ -1,4 +1,14 @@
-<h1>Tags</h1>
-<ul>
-	<li ng-repeat="t in tags"><a ui-sref="tag({ id: t.id })">{{ t.tag }}</a></li>
-</ul>
+<div class="rel">
+	
+	<div class="prev {{prevDisabled}}" data-ng-click="prevPage()"></div>
+	
+	<div class="list">
+		<ul class="items">
+			<li class="item" ng-repeat="t in tags"><a ui-sref="tag({ id: t.id })">#{{ t.tag }}</a></li>
+		</ul>
+		<div class="clear"></div>
+	</div>
+	
+	<div class="next {{nextDisabled}}" data-ng-click="nextPage()"></div>
+	
+</div>

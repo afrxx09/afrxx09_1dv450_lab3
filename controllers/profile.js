@@ -5,14 +5,18 @@
 	.module('app')
 	.controller('profileController', ProfileController);
 
-	ProfileController.$inject = ['$rootScope', '$scope', 'userService'];
-	function ProfileController($rootScope, $scope, userService) {
+	ProfileController.$inject = ['$rootScope', '$scope', 'userService', 'signInService', 'myMessages'];
+	function ProfileController($rootScope, $scope, userService, signInService, myMessages) {
 		userService.getUser($rootScope.currentUser.id)
 		.success(function(data){
 			$scope.user = data;
 		})
 		.error(function(){
-			console.log('error getting profile');
+			myMessages.error('error getting profile');
 		});
+		
+		$scope.signOut = function(){
+			signInService.signOut();
+		};
 	}
 })();

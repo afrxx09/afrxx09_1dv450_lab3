@@ -2,10 +2,14 @@
 <html data-ng-app="app">
 	<head>
 		<base href="/afrxx09_1dv450_lab3/">
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
 		<title>TattooMap</title>
 		<link type='text/css' rel="stylesheet" href="content/css/style.css" />
 		<link type='text/css' rel="stylesheet" href="content/css/view-animation.css" />
-		<link type='text/css' rel='stylesheet' href='//fonts.googleapis.com/css?family=Open+Sans'>
+		<link type='text/css' rel='stylesheet' href='//fonts.googleapis.com/css?family=Open+Sans' />
+		<link type='text/css' rel='stylesheet' href='//fonts.googleapis.com/css?family=Ubuntu+Mono' />
 	</head>
 	<body>
 		<div id="top">
@@ -13,6 +17,7 @@
 			<div id="content-container">
 				<div id="content" data-ng-animate data-ui-view></div>
 			</div>
+			<div data-messages></div>
 		</div>
 		<div id="map">
 			<div data-my-google-map></div>
@@ -32,7 +37,8 @@
 
 		<!-- Modules, Directives, Services -->
 		<script type="text/javascript" src="app-states.js"></script>
-		<script type="text/javascript" src="directives/myGoogleMap.js"></script>
+		<script type="text/javascript" src="directives/my-google-map.js"></script>
+		<script type="text/javascript" src="directives/my-messages.js"></script>
 		
 		<!-- App, controllers, application explicit services -->
 		<script type="text/javascript" src="app.js"></script>
@@ -49,5 +55,7 @@
 		
 		<script type="text/javascript" src="services/tag-service.js"></script>
 		<script type="text/javascript" src="controllers/tags.js"></script>
+		
+		<script type="text/javascript" src="controllers/search.js"></script>
 	</body>
 </html>

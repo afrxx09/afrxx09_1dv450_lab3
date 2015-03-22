@@ -13,7 +13,9 @@ html, body{
 .clear{
 	clear:both;
 }
-
+.rel{
+	position:relative;
+}
 .button{
 	display:inline-block;
 	width:auto;
@@ -44,24 +46,52 @@ input{
 #header{
 	position:absolute;
 	width:100%;
+	height:50px;
 	background-color:#000;
 	z-index:2;
 }
 #nav{
 	float:left;
+	width:250px;
+	height:100%;
+}
+#title{
+	height:100%;
+	margin-left:250px;
+	margin-right:50px;
+	overflow:hidden;
 }
 #sign-in{
-	position:absolute;
-	top:0;
-	right:0;
+	float:right;
+	width:50px;
+	height:100%;
 }
 #content-container{
 	position:relative;
-	margin-top:67px;
+	margin-top:50px;
+}
+#my-messages{
+	position:relative;
+	color:#fff;
+	cursor:pointer;
+}
+#my-messages.success{
+	background-color:#4FC400;	
+}
+#my-messages.warning{
+	background-color:#CFC800;	
+}
+#my-messages.error{
+	background-color:#950914;	
+}
+#my-messages p{
+	font-size:1.35em;
+	padding: .5em 0;
+	text-align:center;
 }
 #content{
 	width:100%;
-	background-color:#111;
+	background-color:#222;
 	color:#ddd;
 	z-index:1;
 }
@@ -72,80 +102,213 @@ input{
 
 /* Navigation */
 #nav ul{
+	width:100%;
+	height:100%;
 	list-style:none;
 }
 
 #nav li{
 	float:left;
-	margin:0 10px;
 }
 #nav a{
 	display:block;
+	width:50px;
+	height:50px;
 }
 #nav a:hover{
-	background-color:#111;
+	background-color:#00B8B8;
 }
 #nav a.active{
-	background-color:#111;
+	background-color:#009696;
 }
 #nav img{
-	height:62px;
+	height:100%;
+	width:100%;
 }
 
-/*Search*/
-#search{
-	width:460px;
-	margin:14px auto 0;
-}
-#search input{
-	float:left;
-	height:36px;
-	width:400px;
-	padding:1px;
-	border:none;
-	outline:none;
-}
-#search span.button{
-	padding:1px 8px;
-	margin:0;
-	border:none;
-}
-#search span.button img{
-	display:block;
-	float:left;
-	height:36px;
+/* Title */
+#title h1{
+	margin-top: 5px;
+	text-align:center;
+	font-size: 30px;
+	color:#fff;
 }
 /*Sign in*/
-#sign-in{
-	padding:1em;
-	color:#fff;
-}
 #sign-in a{
-	color:#009696;
+	display:block;
+	height:100%;
+	width:100%;
+	background-color:#009696;
 }
-#sign-in label{
-	display:inline-block;
-	margin-left:1em;
-	color:#fff;
-	vertical-align:middle;
+#sign-in a:hover{
+	background-color:#00B8B8;
+	cursor:pointer;
 }
-#sign-in input{
-	font-size: .8em;
-	display:inline-block;
-	width:150px;
-	border:1px solid #fff;
-	padding:0 .25em;
-	margin:.25em 0;
-	vertical-align:middle;
-}
-
-#sign-in input:focus{
-	outline:none;
-	border:1px solid #007575;
+#sign-in a img{
+	display:block;
+	height:100%;
+	width:100%;	
 }
 
 /* Google maps */
 #my-google-map-canvas{
 	width:100%;
 	height:100%;
+}
+
+/* Content */
+ul.items {
+	float:left;
+	width:100%;
+	list-style:none;
+}
+
+ul.items li.item{
+	float:left;
+	width:20%;
+}
+ul.items li.item a{
+	display:block;
+	padding:.5em;
+	text-align:center;
+	text-decoration:none;
+	color:#fff;
+	font-family: 'Ubuntu Mono', 'Courier New', Courier, monospace;
+}
+ul.items li.item a:hover{
+	background-color:#00B8B8;
+}
+
+div.prev,
+div.next{
+	position:absolute;
+	top:0;
+	width:50px;
+	height:100%;
+	background:#000;
+	background-repeat:no-repeat;
+	background-position:center;
+	cursor:pointer;
+}
+div.prev:hover,
+div.next:hover{
+	background-color:#00B8B8;
+}
+div.prev{
+	left:0;
+	background-image:url('../images/prev.png');
+}
+div.next{
+	right:0;
+	background-image:url('../images/next.png');
+}
+
+div.list{
+	margin:0 50px;
+}
+
+div.next.disabled,
+div.prev.disabled,
+div.next.disabled:hover,
+div.prev.disabled:hover{
+	background-image:none;
+	background-color:#222;
+	cursor:default;
+}
+
+/*Search*/
+#search-bar{
+	margin:0 auto;
+	padding:10px 0;
+	width:350px;
+}
+#search-bar input{
+	display:block;
+	float:left;
+	height:36px;
+	width:300px;
+	border:none;
+	outline:none;
+}
+#search-bar span.button{
+	display:block;
+	float:left;
+	width:36px;
+	height:36px;
+	margin:0;
+	padding:0 5px;
+	border:none;
+	background-image:url('../images/search.png');
+	background-repeat:no-repeat;
+	background-position:center;
+	background-size:36px 36px;
+}
+
+/* sign in form */
+#sign-in-form{
+	position:relative;
+	width:320px;
+	margin:0 auto;
+	padding: 10px 0;
+}
+
+#sign-in-labels{
+	float:left;
+	width:100px;
+	height:48px;
+}
+#sign-in-inputs{
+	float:left;
+	width:220px;
+	height:48px;
+}
+#sign-in-submit{
+	float:right;
+	width:220px;
+	height:24px;
+}
+
+#sign-in-form label{
+	display:block;
+	float:right;
+	margin-right:5px;
+}
+
+#sign-in-form input{
+	display:block;
+	height:19px;
+	width:210px;
+	padding:2px 5px;
+	border:none;
+	border-bottom:1px solid #222;
+}
+
+#sign-in-form span.button{
+	height:100%;
+	width:100%;
+	margin-left:0;
+	padding:0;
+	border:none;
+	text-align:center;
+}
+
+/* Profile */
+
+#profile{
+	margin-right:50px;
+}
+#sign-out{
+	float:right;
+	height:50px;
+	width:50px;
+	background-color:#950914;
+	background-image:url('../images/sign-out.png');
+	background-repeat:no-repeat;
+	background-position:center;
+	background-size:50px 50px;
+	cursor:pointer;
+}
+
+#sign-out:hover{
+	background-color:#BD0914;
 }

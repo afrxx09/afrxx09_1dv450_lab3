@@ -1,4 +1,14 @@
-<h1>People</h1>
-<ul>
-	<li ng-repeat="u in users"><a ui-sref="user({ id: u.id })">{{ u.first_name }}</a></li>
-</ul>
+<div class="rel">
+	
+	<div class="prev {{prevDisabled}}" data-ng-click="prevPage()"></div>
+	
+	<div class="list">
+		<ul class="items">
+			<li class="item" ng-repeat="u in users"><a ui-sref="user({ id: u.id })">{{ u.first_name }}</a></li>
+		</ul>
+		<div class="clear"></div>
+	</div>
+	
+	<div class="next {{nextDisabled}}" data-ng-click="nextPage()"></div>
+	
+</div>

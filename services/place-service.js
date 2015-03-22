@@ -9,8 +9,8 @@
 
 	function PlaceService($http, CONST){
 		return {
-			getPlaces: function(){
-				return $http.get(CONST.API_URL + 'places');
+			getPlaces: function(limit, offset){
+				return $http.get(CONST.API_URL + 'places?limit=' + limit + '&offset=' + offset);
 			},
 			getPlace: function(id){
 				return $http.get(CONST.API_URL + 'places/' + id);

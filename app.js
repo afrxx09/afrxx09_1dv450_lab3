@@ -9,6 +9,7 @@
     	'ui.router',
     	'appStates',
     	'googleMapsDirective',
+        'messagesDirective',
         'angular-storage',
         'angular-jwt'
     ])
@@ -40,6 +41,8 @@
         
         //Check if a state requires user to be signed in
         $rootScope.$on('$stateChangeStart', function(e, to){
+            $rootScope.currentStateTitle = to.title; //Change title header in top of page on each state change
+            
             if(to.data && to.data.requiresLogin){
                 if(!store.get('jwt')){
                     e.preventDefault();

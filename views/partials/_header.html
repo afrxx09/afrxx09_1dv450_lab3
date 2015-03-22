@@ -1,4 +1,18 @@
-<div id="nav" data-ng-include src="'views/partials/_nav.html'"></div>
-<div id="search"><input type="text" /><span class="button"><img src="content/images/search.png" alt="" /></span></div>
-<div id="sign-in" data-ng-include src="'views/partials/_sign-in.html'"></div>
+<div id="nav">
+	<div data-ng-include src="'views/partials/_nav.html'"></div>
+</div>
+<div id="sign-in">
+	<div data-ng-show="!currentUser">
+		<a ui-sref="signIn"><img src="content/images/sign-in.png" alt="Sign in" /></a>
+	</div>
+	<div data-ng-show="currentUser">
+		<a ui-sref="profile"><img src="content/images/profile.png" alt="Profile" /></a>
+	</div>
+</div>
+<div id="title">
+	<div style="margin-right:200px;">
+		<h1>{{currentStateTitle}}</h1>
+	</div>
+</div>
+
 <div class="clear"></div>
