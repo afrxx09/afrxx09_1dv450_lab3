@@ -27,6 +27,7 @@
             'X-ApiKey': CONST.API_KEY
         };
         
+        //JTW token interceptor for authentication to the API
         jwtInterceptorProvider.tokenGetter = function(store){
             return store.get('jwt');
         }

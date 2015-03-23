@@ -226,7 +226,8 @@ div.prev.disabled:hover{
 	display:block;
 	float:left;
 	height:36px;
-	width:300px;
+	width:280px;
+	padding:0 10px;
 	border:none;
 	outline:none;
 }
