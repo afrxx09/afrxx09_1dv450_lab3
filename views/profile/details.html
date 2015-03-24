@@ -1,9 +1,38 @@
 <div class="rel">
-	
-	<div id="sign-out" data-ng-click="signOut()"></div>
+	<div id="profile-menu">
+		<ul>
+			<li><a ui-sref="new-event"><img src="content/images/new.png" alt="Settings"/></a></li>
+			<li><a ui-sref="settings"><img src="content/images/settings.png" alt="Settings"/></a></li>
+			<li><a class="sign-out" ui-sref="sign-out"><img src="content/images/sign-out.png" alt="Sign out"/></a></li>
+		</ul>
+	</div>
 	
 	<div id="profile">
-		
+		<div class="rel">
+			
+			<div class="prev {{prevDisabled}}" data-ng-click="prevPage()"></div>
+			
+			<div class="list">
+				<ul class="items">
+					<li class="item" ng-repeat="e in user.events">
+						<div class="user-event">
+							<div class="options">
+								<a class="delete" ui-sref="delete-event({ id: e.id})"><img src="content/images/delete.png" alt="Delete" /></a>
+								<a class="edit" ui-sref="edit-event({ id: e.id})"><img src="content/images/edit.png" alt="Edit" /></a>
+							</div>
+							<div class="comment">
+								<span class="date"><strong>Datum: </strong>{{e.created | date:'yyyy-MM-dd HH:mm:ss'}}</span><br />
+								{{e.comment}}
+							</div>
+						</div>
+					</li>
+				</ul>
+				<div class="clear"></div>
+			</div>
+			
+			<div class="next {{nextDisabled}}" data-ng-click="nextPage()"></div>
+			
+		</div>
 	</div>
 	<div class="clear"></div>
 </div>

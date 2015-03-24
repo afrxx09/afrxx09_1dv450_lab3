@@ -16,6 +16,9 @@ html, body{
 .rel{
 	position:relative;
 }
+.center{
+	text-align:center;
+}
 .button{
 	display:inline-block;
 	width:auto;
@@ -24,10 +27,18 @@ html, body{
 	background-color:#009696;
 	border:1px solid #007575;
 	color:#fff;
+	cursor:pointer;
+	text-decoration:none;
 }
 .button:hover{
 	background-color:#00B8B8;
-	cursor:pointer;
+}
+.button.red{
+	background-color:#950914;
+	border:1px solid #BD0914;
+}
+.button.red:hover{
+	background-color:#BD0914;
 }
 
 input{
@@ -163,11 +174,11 @@ ul.items {
 	list-style:none;
 }
 
-ul.items li.item{
+ul.items>li.item{
 	float:left;
 	width:20%;
 }
-ul.items li.item a{
+ul.items>li.item>a{
 	display:block;
 	padding:.5em;
 	text-align:center;
@@ -175,7 +186,7 @@ ul.items li.item a{
 	color:#fff;
 	font-family: 'Ubuntu Mono', 'Courier New', Courier, monospace;
 }
-ul.items li.item a:hover{
+ul.items>li.item>a:hover{
 	background-color:#00B8B8;
 }
 
@@ -296,20 +307,98 @@ div.prev.disabled:hover{
 /* Profile */
 
 #profile{
-	margin-right:50px;
+	margin-right:150px;
 }
-#sign-out{
+
+/* Profile menu */
+
+#profile-menu{
 	float:right;
+	width:150px;
+	height:50px;
+}
+#profile-menu ul{
+	float:left;
+	list-style:none;
+	margin:0;
+	padding:0;
+	background-color:#009696;
+}
+#profile-menu ul li{
+	float:left;
 	height:50px;
 	width:50px;
+}
+#profile-menu ul li a{
+	display:block;
+	cursor:pointer;
+}
+#profile-menu ul li a:hover{
+	background-color:#00B8B8;
+}
+#profile-menu ul li a.sign-out{
 	background-color:#950914;
-	background-image:url('../images/sign-out.png');
-	background-repeat:no-repeat;
-	background-position:center;
-	background-size:50px 50px;
+}
+#profile-menu ul li a.sign-out:hover{
+	background-color:#BD0914;
+}
+#profile-menu ul li img{
+	display:block;
+	width:100%;
+	height:100%;
+}
+
+#profile .user-event{
+	position:relative;
+	width:100%;
+}
+
+#profile .user-event img{
+	width:30px;
+	height:30px;
+}
+
+#profile .user-event .comment{
+	margin-left:60px;
+	padding:0 5px;
+	height:50px;
+	overflow:hidden;
+}
+#profile .user-event .comment .date{
+	font-size:12px;
+	font-style:italic;
+}
+
+#profile .user-event .options{
+	float:left;
+	width:60px;
+	height:30px;
+	padding:10px 0;
 	cursor:pointer;
 }
 
-#sign-out:hover{
+#profile .user-event .options .edit{
+	float:left;
+	height:30px;
+	width:30px;
+	background-color:#009696;
+}
+#profile .user-event .options .delete{
+	float:left;
+	height:30px;
+	width:30px;
+	background-color:#950914;
+}
+
+#profile .user-event .options .edit:hover{
+	background-color:#00B8B8;
+}
+#profile .user-event .options .delete:hover{
 	background-color:#BD0914;
+}
+
+/* delete confirm */
+#delete-confirm{
+	padding:10px 0;
+	font-size:16px;
 }

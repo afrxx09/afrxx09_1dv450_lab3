@@ -12,7 +12,7 @@
 			$scope.user = data;
 		})
 		.error(function(){
-			myMessages.error('error getting profile');
+			myMessages.error('Error getting profile');
 		});
 		
 		$scope.signOut = function(){

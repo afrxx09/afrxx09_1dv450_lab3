@@ -63,11 +63,27 @@
                 templateUrl: 'views/search/search.html',
                 controller: 'searchController'
             })
-            .state('signIn', {
-                url: '/signin',
+            .state('sign-in', {
+                url: '/sign-in',
                 title: 'Sign In',
                 templateUrl: 'views/sign-in/sign-in.html',
                 controller: 'signInController'
+            })
+            .state('sign-out', {
+                url: '/sign-out',
+                controller: 'signOutController'
+            })
+            .state('edit-event', {
+                url: '/edit-event/{id}',
+                title: 'Edit Event',
+                templateUrl: 'views/events/edit.html',
+                controller: 'editEventController'
+            })
+            .state('delete-event', {
+                url: '/delete-event/{id}',
+                title: 'Delete Event',
+                templateUrl: 'views/events/delete.html',
+                controller: 'deleteEventController'
             });
     };
 })();

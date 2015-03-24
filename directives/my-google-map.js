@@ -11,9 +11,13 @@
 		return {
 			events: [],
 			markers: [],
+			center: null,
 			setEvents: function(events){
 				this.events = events;
 			},
+			setCenter: function(lat, lng){
+				this.center = new google.maps.LatLng(lat, lng);
+			}
 		};
 	}
 	
@@ -80,7 +84,8 @@
 			function createMarkers(events){
 				$scope.factory.markers = [];
 				for(var i = 0; i < events.length; i++){
-					$scope.factory.markers.push(createMarker(events[i]));
+					var m = createMarker(events[i]);
+					$scope.factory.markers.push(m);
 				}
 			}
 			function createMarker(e){

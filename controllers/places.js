@@ -51,11 +51,15 @@
 		}
 	}
 	
-	PlaceController.$inject = ['$scope', '$stateParams', 'placeService'];
-	function PlaceController($scope, $stateParams, placeService) {
+	PlaceController.$inject = ['$scope', '$stateParams', 'placeService', 'myGoogleMap'];
+	function PlaceController($scope, $stateParams, placeService, myGoogleMap) {
 		placeService.getPlace($stateParams.id)
 		.success(function(data){
+			console.log(data);
 			$scope.place = data;
+			if(data.lat && data.lng){
+				myGoogleMap.setCenter(lat, lng);
+			}
 		})
 		.error(function(){
 			myMessages.error('Error fetching place.');
