@@ -17,6 +17,7 @@
             })
             .state('profile', {
                 url: '/profile',
+                requiresLogin: true,
                 title: 'Profile',
                 templateUrl: 'views/profile/details.html',
                 controller: 'profileController'
@@ -73,14 +74,23 @@
                 url: '/sign-out',
                 controller: 'signOutController'
             })
+            .state('new-event', {
+                url: '/new-event',
+                requiresLogin: true,
+                title: 'New Event',
+                templateUrl: 'views/events/new.html',
+                controller: 'newEventController'
+            })
             .state('edit-event', {
                 url: '/edit-event/{id}',
+                requiresLogin: true,
                 title: 'Edit Event',
                 templateUrl: 'views/events/edit.html',
                 controller: 'editEventController'
             })
             .state('delete-event', {
                 url: '/delete-event/{id}',
+                requiresLogin: true,
                 title: 'Delete Event',
                 templateUrl: 'views/events/delete.html',
                 controller: 'deleteEventController'

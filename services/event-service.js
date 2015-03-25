@@ -20,6 +20,12 @@
 			},
 			deleteEvent: function(id){
 				return $http.delete(CONST.API_URL + 'events/' + id);
+			},
+			updateEvent : function(event){
+				return $http.put(CONST.API_URL + 'events/' + event.id, event);
+			},
+			createEvent: function(event){
+				return $http.post(CONST.API_URL + 'events/', event);
 			}
 		};
 	}

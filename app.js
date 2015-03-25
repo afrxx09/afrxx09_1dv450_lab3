@@ -31,7 +31,7 @@
         jwtInterceptorProvider.tokenGetter = function(store){
             return store.get('jwt');
         }
-        jwtInterceptorProvider.authHeader = 'JWT';
+        jwtInterceptorProvider.authHeader = 'Authorization';
         jwtInterceptorProvider.authPrefix = '';
         $httpProvider.interceptors.push('jwtInterceptor');
     }
@@ -44,10 +44,10 @@
         $rootScope.$on('$stateChangeStart', function(e, to){
             $rootScope.currentStateTitle = to.title; //Change title header in top of page on each state change
             
-            if(to.data && to.data.requiresLogin){
+            if(to.requiresLogin){
                 if(!store.get('jwt')){
                     e.preventDefault();
-                    $state.go('home');
+                    $state.go('home', {reload: true});
                 }
             }
         });

@@ -402,3 +402,23 @@ div.prev.disabled:hover{
 	padding:10px 0;
 	font-size:16px;
 }
+
+/* edit event */
+#edit-event{
+	padding:10px;
+	text-align:center;
+}
+
+#edit-event input{
+	width:300px;
+}
+
+/* new event */
+#new-event{
+	padding:10px 0;
+	text-align:center;
+}
+
+#new-event .button{
+	margin-top:5px;
+}

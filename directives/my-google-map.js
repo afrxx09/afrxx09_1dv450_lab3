@@ -11,12 +11,16 @@
 		return {
 			events: [],
 			markers: [],
-			center: null,
+			draggableEnabled: false,
+			draggableMarker: null,
 			setEvents: function(events){
 				this.events = events;
 			},
-			setCenter: function(lat, lng){
-				this.center = new google.maps.LatLng(lat, lng);
+			enableDraggableMarker: function(){
+				this.draggableEnabled = true;
+			},
+			disableDraggableMarker: function(){
+				this.draggableEnabled = false;
 			}
 		};
 	}
@@ -97,6 +101,22 @@
 					markers[i].setMap($scope.googleMap);
 				}
 			}
+			
+			$scope.$watch('factory.draggableEnabled', function(){
+				if($scope.factory.draggableEnabled == false && $scope.factory.draggableMarker != null){
+					$scope.factory.draggableMarker.setMap(null);
+					$scope.factory.draggableMarker = null;
+				}
+				if($scope.factory.draggableEnabled == true && $scope.factory.draggableMarker == null){
+					$scope.factory.draggableMarker = new google.maps.Marker({
+						position: $scope.googleMap.getCenter(),
+						draggable: true,
+						map: $scope.googleMap,
+						animation: google.maps.Animation.DROP
+					});
+				}
+					
+			});
 		}
 	}
 })();
