@@ -14,6 +14,9 @@
 			},
 			getPlace: function(id){
 				return $http.get(CONST.API_URL + 'places/' + id);
+			},
+			getPlaceByGoogleId: function(google_place_id){
+				return $http.get(CONST.API_URL + 'places/google_place_id/' + google_place_id);
 			}
 		};
 	}

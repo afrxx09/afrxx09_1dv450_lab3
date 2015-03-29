@@ -13,7 +13,8 @@
         $stateProvider
             .state('home', {
                 url: '/',
-                title: ''
+                title: '',
+                controller: 'homeController'
             })
             .state('profile', {
                 url: '/profile',
@@ -94,6 +95,11 @@
                 title: 'Delete Event',
                 templateUrl: 'views/events/delete.html',
                 controller: 'deleteEventController'
+            })
+            .state('event', {
+                url: '/event/{id}',
+                templateUrl: 'views/events/show.html',
+                controller: 'eventController'
             });
     };
 })();

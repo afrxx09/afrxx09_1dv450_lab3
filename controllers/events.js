@@ -3,10 +3,28 @@
 
 	angular
 	.module('app')
+	.controller('eventController', EventController)
 	.controller('newEventController', NewEventController)
 	.controller('editEventController', EditEventController)
 	.controller('deleteEventController', DeleteEventController);
-
+	
+	EventController.$inject = ['$rootScope', '$scope', '$stateParams', 'eventService', 'myMessages', 'myGoogleMap'];
+	function EventController($rootScope, $scope, $stateParams, eventService, myMessages, myGoogleMap){
+		$scope.event = {};
+		eventService.getEvent($stateParams.id)
+		.success(function(data){
+			$scope.event = data;
+			myGoogleMap.map.setZoom(15);
+			myGoogleMap.map.setCenter({lat: parseFloat($scope.event.position.lat), lng: parseFloat($scope.event.position.lng)});
+			$rootScope.currentStateTitle = data.place.name;
+			myGoogleMap.addMarker($scope.event.position.lat, $scope.event.position.lng);
+			myGoogleMap.placeMarkers();
+		})
+		.error(function(){
+			myMessages.error('Could not find Event.');
+		});
+	}
+	
 	NewEventController.$inject = ['$scope', '$stateParams', '$state', 'eventService', 'myMessages', 'myGoogleMap'];
 	function NewEventController($scope, $stateParams, $state, eventService, myMessages, myGoogleMap){
 		myGoogleMap.enableDraggableMarker();

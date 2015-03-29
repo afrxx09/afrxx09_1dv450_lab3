@@ -51,14 +51,17 @@
 		}
 	}
 	
-	PlaceController.$inject = ['$scope', '$stateParams', 'placeService', 'myGoogleMap'];
-	function PlaceController($scope, $stateParams, placeService, myGoogleMap) {
+	PlaceController.$inject = ['$rootScope', '$scope', '$stateParams', 'placeService', 'myGoogleMap'];
+	function PlaceController($rootScope, $scope, $stateParams, placeService, myGoogleMap) {
 		placeService.getPlace($stateParams.id)
 		.success(function(data){
-			console.log(data);
 			$scope.place = data;
-			if(data.lat && data.lng){
-				myGoogleMap.setCenter(lat, lng);
+			$rootScope.currentStateTitle = $scope.place.name;
+			if($scope.place.lat && $scope.place.lng){
+				myGoogleMap.map.setCenter({lat: parseFloat($scope.place.lat), lng: parseFloat($scope.place.lng)});
+				myGoogleMap.addMarker($scope.place.lat, $scope.place.lng);
+				myGoogleMap.placeMarkers();
+				myGoogleMap.map.setZoom(14);
 			}
 		})
 		.error(function(){

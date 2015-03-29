@@ -16,7 +16,10 @@
 				return $http.get(CONST.API_URL + 'events/' + id);
 			},
 			getNearbyEvents: function(lat, lng){
-				return $http.get(CONST.API_URL + 'events/nearby?lat=' + lat + '&lng=' + lng + '&radius=10');
+				return $http.get(CONST.API_URL + 'events/nearby?lat=' + lat + '&lng=' + lng + '&radius=100');
+			},
+			getEventsByGooglePlaceId: function(google_place_id){
+				return $http.get(CONST.API_URL + 'events/google_place_id/' + google_place_id);
 			},
 			deleteEvent: function(id){
 				return $http.delete(CONST.API_URL + 'events/' + id);

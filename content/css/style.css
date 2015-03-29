@@ -228,12 +228,12 @@ div.prev.disabled:hover{
 }
 
 /*Search*/
-#search-bar{
+#my-google-places{
 	margin:0 auto;
 	padding:10px 0;
 	width:350px;
 }
-#search-bar input{
+#my-google-places input{
 	display:block;
 	float:left;
 	height:36px;
@@ -242,7 +242,7 @@ div.prev.disabled:hover{
 	border:none;
 	outline:none;
 }
-#search-bar span.button{
+#my-google-places span.button{
 	display:block;
 	float:left;
 	width:36px;

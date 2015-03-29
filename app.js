@@ -9,13 +9,16 @@
     	'ui.router',
     	'appStates',
     	'googleMapsDirective',
+        'googlePlacesDirective',
         'messagesDirective',
         'angular-storage',
         'angular-jwt'
     ])
     .constant('CONST', {
         'API_URL': 'http://localhost:3000/api/v2/',
-        'API_KEY': '524c94faf385b814ce22d7d83b73cbd3'
+        'API_KEY': '524c94faf385b814ce22d7d83b73cbd3',
+        'GOOGLE_API_KEY': 'AIzaSyDYlhceo2DVkVgSsS0PTC6r4AN3AQpgQyc',
+        'GOOGLE_PLACES_URL': 'https://maps.googleapis.com/maps/api/place/autocomplete/json?'
     })
     .config(appConfig)
     .run(appRun);
