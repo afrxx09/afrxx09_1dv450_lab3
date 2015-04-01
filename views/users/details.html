@@ -1,1 +1,18 @@
-<p>{{user.first_name}}</p>
+<div class="rel">
+	<div class="list tag-events">
+		<ul class="items">
+			<li class="item" ng-repeat="e in events" data-ng-click="showEvent($index);">
+				<div>
+					{{ e.place.name }}
+				</div>
+				<div>
+					<strong>{{ e.user.first_name}}:</strong>{{ e.comment }}
+				</div>
+				<div>
+					<i>{{ e.created | date:'yyyy-MM-dd' }}</i>
+				</div>
+			</li>
+		</ul>
+		<div class="clear"></div>
+	</div>
+</div>

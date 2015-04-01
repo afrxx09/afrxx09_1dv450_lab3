@@ -51,14 +51,38 @@
 		}
 	}
 	
-	UserController.$inject = ['$scope', '$stateParams', 'userService'];
-	function UserController($scope, $stateParams, userService) {
+	UserController.$inject = ['$rootScope', '$scope', '$stateParams', 'userService', 'eventService', 'myGoogleMap'];
+	function UserController($rootScope, $scope, $stateParams, userService, eventService, myGoogleMap) {
 		userService.getUser($stateParams.id)
 		.success(function(data){
 			$scope.user = data;
+			$rootScope.currentStateTitle = 'Events by: ' + $scope.user.first_name;
+			myGoogleMap.map.setZoom(8);
+			eventService.getEventsByUserId($scope.user.id)
+			.success(function(data){
+				$scope.events = data.events;
+				for(var i = 0; i < $scope.events.length; i++){
+					myGoogleMap.addMarker($scope.events[i].position.lat, $scope.events[i].position.lng);
+					$scope.events[i].marker = myGoogleMap.markers[i];
+				}
+				myGoogleMap.placeMarkers();
+			})
+			.error(function(){
+				myMessages.error('Error getting events.');
+			});
 		})
 		.error(function(){
 			console.log('error getting user');
+		});
+		
+		$scope.showEvent = function(index){
+			$scope.event = $scope.events[index];
+			myGoogleMap.map.setCenter({lat: parseFloat($scope.event.position.lat), lng: parseFloat($scope.event.position.lng)});
+			myGoogleMap.map.setZoom(12);
+			
+		}
+		$scope.$on('$destroy', function(){
+			myGoogleMap.clearMarkers();
 		});
 	}
 })();

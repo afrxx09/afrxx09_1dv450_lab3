@@ -326,11 +326,13 @@ div.prev.disabled:hover{
 }
 #profile-menu ul li{
 	float:left;
-	height:50px;
+	height:60px;
 	width:50px;
 }
 #profile-menu ul li a{
 	display:block;
+	height:50px;
+	padding:5px 0;
 	cursor:pointer;
 }
 #profile-menu ul li a:hover{
@@ -359,9 +361,10 @@ div.prev.disabled:hover{
 }
 
 #profile .user-event .comment{
-	margin-left:60px;
+	margin-left:30px;
 	padding:0 5px;
-	height:50px;
+	height:60px;
+	font-size:12px;
 	overflow:hidden;
 }
 #profile .user-event .comment .date{
@@ -371,9 +374,9 @@ div.prev.disabled:hover{
 
 #profile .user-event .options{
 	float:left;
-	width:60px;
-	height:30px;
-	padding:10px 0;
+	width:30px;
+	height:60px;
+	padding:0;
 	cursor:pointer;
 }
 
@@ -421,4 +424,20 @@ div.prev.disabled:hover{
 
 #new-event .button{
 	margin-top:5px;
+}
+
+/* Tag events */
+.list.tag-events li{
+	font-size:12px;
+	padding:5px 0;
+	cursor:pointer;
+}
+.list.tag-events li:hover{
+	background-color:#00B8B8;
+}
+
+/* Place events */
+.list.place-events li{
+	font-size:12px;
+	padding:6px 0;
 }

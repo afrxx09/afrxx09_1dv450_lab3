@@ -1,1 +1,17 @@
-<p>{{place.name}}</p>
+<div class="rel">
+	<div class="list place-events">
+		<ul class="items">
+			<li class="item" ng-repeat="e in events">
+				<div>
+					{{ e.created | date:'yyyy-MM-dd' }}
+					{{ e.user.first_name}}:
+					
+				</div>
+				<div>
+					{{ e.comment }}
+				</div>
+			</li>
+		</ul>
+		<div class="clear"></div>
+	</div>
+</div>

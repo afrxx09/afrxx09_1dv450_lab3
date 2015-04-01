@@ -42,8 +42,14 @@
 				$scope.events[i].marker = myGoogleMap.markers[i];
 				google.maps.event.addListener(myGoogleMap.markers[i], 'click', (function(event) {
 					return function(){
-						$state.go('event', {id: event.id});
-						myGoogleMap.clearMarkers();
+						if(event.place){
+							$state.go('place', {id: event.place.id});
+							myGoogleMap.clearMarkers();
+						}
+						else{
+							$state.go('event', {id: event.id});
+							myGoogleMap.clearMarkers();	
+						}
 					}
 				})($scope.events[i]));
 			}

@@ -9,8 +9,10 @@
 	MyGooglePlacesFactory.$inject = [];
 	function MyGooglePlacesFactory(){
 		return {
-			query: null,
-			place: null
+			autocomplete: null,
+			place: null,
+			map: null,
+			infoWindow: null
 		};
 	}
 	
@@ -24,48 +26,29 @@
 			controller: MyGooglePlacesController
 		};
 		
-		MyGooglePlacesController.$inject = ['$scope', '$element', '$attrs', '$http', '$state', 'myGooglePlaces', 'myGoogleMap', 'placeService', 'CONST'];
-		function MyGooglePlacesController($scope, $element, $attrs, $http, $state, myGooglePlaces, myGoogleMap, placeService, CONST){
+		MyGooglePlacesController.$inject = ['$scope', '$element', '$attrs',, 'myGooglePlaces', 'myGoogleMap'];
+		function MyGooglePlacesController($scope, $element, $attrs, myGooglePlaces, myGoogleMap){
 			myGoogleMap.clearMarkers();
-			$scope.factory = myGooglePlaces;
-			var map = myGoogleMap.map;
-			var autocomplete = new google.maps.places.Autocomplete(
+			myGooglePlaces = myGooglePlaces;
+			myGooglePlaces.map = myGoogleMap.map;
+			myGooglePlaces.autocomplete = new google.maps.places.Autocomplete(
 				document.getElementById('queryInput'),
 				{
-					bounds: map.getBounds(),
+					bounds: myGooglePlaces.map.getBounds(),
 					types: ['establishment']
 				}	
 			);
-			var infowindow = new google.maps.InfoWindow();
+			myGooglePlaces.infoWindow = new google.maps.InfoWindow();
 			
-  			google.maps.event.addListener(autocomplete, 'place_changed', function() {
-  				infowindow.close();
-				var place = autocomplete.getPlace();
-				$scope.factory.place = place;
-				map.setCenter(place.geometry.location);
-      			map.setZoom(15);
-				
-				placeService.getPlaceByGoogleId(place.place_id)
-				.success(function(data){
-					if(data){
-						$state.go('place', {id: data.id})
-					}
-					infowindow.setContent('<div><strong>' + place.name + '</strong><br /></div>');
-	      			infowindow.setPosition(place.geometry.location)
-					infowindow.open(map);
-				})
-				.error(function(){
-					console.log('error');
-				});
-			});
-			
-			google.maps.event.addListener(map, 'bounds_changed', function() {
-				autocomplete.setBounds(map.getBounds());
+			google.maps.event.addListener(myGooglePlaces.map, 'bounds_changed', function() {
+				myGooglePlaces.autocomplete.setBounds(myGooglePlaces.map.getBounds());
 			});
 			
 			$scope.$on('$destroy', function(){
 				myGooglePlaces.place = null;
-				infowindow.close();
+				myGooglePlaces.autocomplete = null;
+				myGooglePlaces.infoWindow.close();
+				google.maps.event.clearListeners(myGooglePlaces.map, 'bounds_changed');
 			});
 		}
 	}

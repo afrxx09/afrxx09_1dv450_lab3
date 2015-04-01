@@ -51,14 +51,39 @@
 		}
 	}
 	
-	TagController.$inject = ['$scope', '$stateParams', 'tagService'];
-	function TagController($scope, $stateParams, tagService) {
+	TagController.$inject = ['$rootScope', '$scope', '$stateParams', 'tagService', 'eventService', 'myGoogleMap', 'myMessages'];
+	function TagController($rootScope, $scope, $stateParams, tagService, eventService, myGoogleMap, myMessages) {
 		tagService.getTag($stateParams.id)
 		.success(function(data){
 			$scope.tag = data;
+			$rootScope.currentStateTitle = '#' + $scope.tag.tag;
+			myGoogleMap.map.setZoom(6);
+			eventService.getEventsByTagId($scope.tag.id)
+			.success(function(data){
+				$scope.events = data.events;
+				for(var i = 0; i < $scope.events.length; i++){
+					myGoogleMap.addMarker($scope.events[i].position.lat, $scope.events[i].position.lng);
+					$scope.events[i].marker = myGoogleMap.markers[i];
+				}
+				myGoogleMap.placeMarkers();
+			})
+			.error(function(){
+				myMessages.error('Error getting events.');
+			});
+			
 		})
 		.error(function(){
 			myMessages.error('Error getting tag.');
+		});
+		
+		$scope.showEvent = function(index){
+			$scope.event = $scope.events[index];
+			myGoogleMap.map.setCenter({lat: parseFloat($scope.event.position.lat), lng: parseFloat($scope.event.position.lng)});
+			myGoogleMap.map.setZoom(12);
+			
+		}
+		$scope.$on('$destroy', function(){
+			myGoogleMap.clearMarkers();
 		});
 	}
 })();

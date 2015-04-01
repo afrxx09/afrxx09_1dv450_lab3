@@ -21,6 +21,15 @@
 			getEventsByGooglePlaceId: function(google_place_id){
 				return $http.get(CONST.API_URL + 'events/google_place_id/' + google_place_id);
 			},
+			getEventsByPlaceId: function(place_id){
+				return $http.get(CONST.API_URL + 'places/' + place_id + '/events');
+			},
+			getEventsByTagId: function(tag_id){
+				return $http.get(CONST.API_URL + 'tags/' + tag_id + '/events');
+			},
+			getEventsByUserId: function(user_id){
+				return $http.get(CONST.API_URL + 'users/' + user_id + '/events');
+			},
 			deleteEvent: function(id){
 				return $http.delete(CONST.API_URL + 'events/' + id);
 			},

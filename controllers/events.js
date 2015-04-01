@@ -16,7 +16,7 @@
 			$scope.event = data;
 			myGoogleMap.map.setZoom(15);
 			myGoogleMap.map.setCenter({lat: parseFloat($scope.event.position.lat), lng: parseFloat($scope.event.position.lng)});
-			$rootScope.currentStateTitle = data.place.name;
+			$rootScope.currentStateTitle = (data.place) ? data.place.name : '';
 			myGoogleMap.addMarker($scope.event.position.lat, $scope.event.position.lng);
 			myGoogleMap.placeMarkers();
 		})
@@ -27,10 +27,15 @@
 	
 	NewEventController.$inject = ['$scope', '$stateParams', '$state', 'eventService', 'myMessages', 'myGoogleMap'];
 	function NewEventController($scope, $stateParams, $state, eventService, myMessages, myGoogleMap){
-		myGoogleMap.enableDraggableMarker();
 		$scope.event = {};
+		myGoogleMap.map.setZoom(14);
+		myGoogleMap.draggable = new google.maps.Marker({
+		    position: myGoogleMap.map.getCenter(),
+		    map: myGoogleMap.map,
+		    draggable:true
+		});
 		$scope.create = function(){
-			var pos = myGoogleMap.draggableMarker.getPosition();
+			var pos = myGoogleMap.draggable.getPosition();
 			$scope.event.lat = pos.lat();
 			$scope.event.lng = pos.lng();
 			eventService.createEvent($scope.event)
@@ -44,7 +49,8 @@
 		}
 		
 		$scope.$on('$destroy', function(){
-			myGoogleMap.disableDraggableMarker();
+			myGoogleMap.draggable.setMap(null);
+			myGoogleMap.draggable = null;
 		});
 	}
 	

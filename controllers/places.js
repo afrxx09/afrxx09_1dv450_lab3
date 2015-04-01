@@ -51,8 +51,8 @@
 		}
 	}
 	
-	PlaceController.$inject = ['$rootScope', '$scope', '$stateParams', 'placeService', 'myGoogleMap'];
-	function PlaceController($rootScope, $scope, $stateParams, placeService, myGoogleMap) {
+	PlaceController.$inject = ['$rootScope', '$scope', '$stateParams', 'placeService', 'eventService', 'myGoogleMap'];
+	function PlaceController($rootScope, $scope, $stateParams, placeService, eventService, myGoogleMap) {
 		placeService.getPlace($stateParams.id)
 		.success(function(data){
 			$scope.place = data;
@@ -62,10 +62,24 @@
 				myGoogleMap.addMarker($scope.place.lat, $scope.place.lng);
 				myGoogleMap.placeMarkers();
 				myGoogleMap.map.setZoom(14);
+				eventService.getEventsByPlaceId($scope.place.id)
+				.success(function(data){
+					$scope.events = data.events;
+					for(var i = 0; i < $scope.events.length; i++){
+						myGoogleMap.addMarker($scope.events[i].position.lat, $scope.events[i].position.lng);
+						$scope.events[i].marker = myGoogleMap.markers[i];
+					}
+					myGoogleMap.placeMarkers();
+				})
+				.error(function(){
+					myMessages.error('Error getting events.');
+				});
 			}
 		})
 		.error(function(){
 			myMessages.error('Error fetching place.');
 		});
+		
+		
 	}
 })();
